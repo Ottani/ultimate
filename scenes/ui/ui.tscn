@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpqruqoa7k20b"]
+
+[ext_resource type="Theme" uid="uid://6ifmwtc0u1dk" path="res://scenes/ui/main_theme.tres" id="1_drpcf"]
+[ext_resource type="Texture2D" uid="uid://cvmlnsyytkilh" path="res://graphics/ui/bullet.png" id="1_f1rgd"]
+[ext_resource type="Script" path="res://scenes/ui/ui.gd" id="1_iq0of"]
+[ext_resource type="Texture2D" uid="uid://cretur3pqoye7" path="res://graphics/ui/grenade.png" id="2_ahkfo"]
+[ext_resource type="PackedScene" uid="uid://b6sgi33t357dg" path="res://scenes/ui/health_progress_bar.tscn" id="5_xc7ug"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_iq0of")
+
+[node name="LaserCounter" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.01
+anchor_top = 0.92
+anchor_right = 0.01
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LaserCounter"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="LaserCounter/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_drpcf")
+text = "20"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="LaserCounter/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_f1rgd")
+expand_mode = 4
+
+[node name="GrenadeCounter" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.06
+anchor_top = 0.92
+anchor_right = 0.06
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GrenadeCounter"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 70.0
+
+[node name="Label" type="Label" parent="GrenadeCounter/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_drpcf")
+text = "5"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="GrenadeCounter/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_ahkfo")
+expand_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 30
+
+[node name="HealthProgressBar" parent="MarginContainer" instance=ExtResource("5_xc7ug")]
+layout_mode = 2
